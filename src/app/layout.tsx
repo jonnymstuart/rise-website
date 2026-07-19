@@ -1,20 +1,29 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter } from "next/font/google";
+import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { SiteNav } from "@/components/layout/SiteNav";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 
 /**
- * Type system (substitutes for Rise's licensed faces):
- *  - Fraunces  -> "PP Eiko" high-contrast display serif (headlines, logo, quotes)
- *  - Inter     -> "ABC Diatype" neutral grotesque (UI, body, labels)
+ * Type system:
+ *  - PP Eiko (Regular only) -> display serif (headlines, logo, quotes)
+ *  - ABC Diatype Italic (trial) -> italic accents inside display copy
+ *  - Inter -> body/UI grotesque until an upright ABC Diatype cut is licensed
  */
-const fraunces = Fraunces({
+const eiko = localFont({
+  src: "../../public/fonts/PPEiko-Regular.otf",
   variable: "--font-display",
-  subsets: ["latin"],
   display: "swap",
-  style: ["normal", "italic"],
-  axes: ["SOFT", "WONK", "opsz"],
+  weight: "400",
+});
+
+const diatypeItalic = localFont({
+  src: "../../public/fonts/ABCDiatype-RegularItalic-Trial.otf",
+  variable: "--font-accent",
+  display: "swap",
+  weight: "400",
+  style: "italic",
 });
 
 const inter = Inter({
@@ -58,7 +67,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fraunces.variable} ${inter.variable} h-full antialiased`}
+      className={`${eiko.variable} ${diatypeItalic.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-page text-ink font-sans">
         <SiteNav />

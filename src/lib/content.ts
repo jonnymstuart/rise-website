@@ -20,6 +20,20 @@ export const nav: NavItem[] = [
   { label: "Contact", href: "/contact" },
 ];
 
+/** Interactive topo landing screen (preview at /landing). */
+export const landing = {
+  headline: {
+    line1: "We create the future",
+    line2Pre: "with our ",
+    accent: "partners",
+    line2Post: " —",
+  },
+  sub: "Through AI, design, GEO and development.",
+  meta: "38.7223° N, 9.1393° W — Lisboa",
+  scrollHint: "Scroll",
+  cta: { label: "Start a project", href: "/contact" },
+};
+
 export const hero = {
   lead: "Make it",
   leadAccent: "unreal",

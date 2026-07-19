@@ -25,6 +25,7 @@
   --color-rose: #d6155e;
 
   --font-display: var(--font-display), "Times New Roman", serif;
+  --font-accent: var(--font-accent), Georgia, serif;
   --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
 
   --radius-pill: 999px;
@@ -107,10 +108,25 @@ body {
   animation: fade-up 0.8s var(--ease-rise) both;
 }
 
+/* Masked line reveal: parent needs overflow-hidden; child slides up into view */
+@keyframes rise-line {
+  from {
+    transform: translateY(110%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.reveal-line {
+  animation: rise-line 0.8s var(--ease-rise) both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee,
   .animate-drift,
-  .reveal {
+  .reveal,
+  .reveal-line {
     animation: none !important;
   }
   html {
